@@ -1,0 +1,76 @@
+Microsoft Windows [Version 10.0.21390.2025]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\trow1\Documents\python\python-3.10.2-embed-amd64>python.exe ..\projects\bot_test\main.py
+Traceback (most recent call last):
+  File "C:\Users\trow1\Documents\python\python-3.10.2-embed-amd64\lib\site-packages\urllib3\connectionpool.py", line 449, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "C:\Users\trow1\Documents\python\python-3.10.2-embed-amd64\lib\site-packages\urllib3\connectionpool.py", line 444, in _make_request
+    httplib_response = conn.getresponse()
+  File "http\client.py", line 1374, in getresponse
+  File "http\client.py", line 318, in begin
+  File "http\client.py", line 279, in _read_status
+  File "socket.py", line 705, in readinto
+  File "ssl.py", line 1273, in recv_into
+  File "ssl.py", line 1129, in read
+TimeoutError: The read operation timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\trow1\Documents\python\python-3.10.2-embed-amd64\lib\site-packages\requests\adapters.py", line 440, in send
+    resp = conn.urlopen(
+  File "C:\Users\trow1\Documents\python\python-3.10.2-embed-amd64\lib\site-packages\urllib3\connectionpool.py", line 785, in urlopen
+    retries = retries.increment(
+  File "C:\Users\trow1\Documents\python\python-3.10.2-embed-amd64\lib\site-packages\urllib3\util\retry.py", line 550, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "C:\Users\trow1\Documents\python\python-3.10.2-embed-amd64\lib\site-packages\urllib3\packages\six.py", line 770, in reraise
+    raise value
+  File "C:\Users\trow1\Documents\python\python-3.10.2-embed-amd64\lib\site-packages\urllib3\connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+  File "C:\Users\trow1\Documents\python\python-3.10.2-embed-amd64\lib\site-packages\urllib3\connectionpool.py", line 451, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+  File "C:\Users\trow1\Documents\python\python-3.10.2-embed-amd64\lib\site-packages\urllib3\connectionpool.py", line 340, in _raise_timeout
+    raise ReadTimeoutError(
+urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='api.bybit.com', port=443): Read timed out. (read timeout=10)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\trow1\Documents\python\python-3.10.2-embed-amd64\lib\site-packages\ccxt\base\exchange.py", line 632, in fetch
+    response = self.session.request(
+  File "C:\Users\trow1\Documents\python\python-3.10.2-embed-amd64\lib\site-packages\requests\sessions.py", line 529, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\trow1\Documents\python\python-3.10.2-embed-amd64\lib\site-packages\requests\sessions.py", line 645, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\trow1\Documents\python\python-3.10.2-embed-amd64\lib\site-packages\requests\adapters.py", line 532, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPSConnectionPool(host='api.bybit.com', port=443): Read timed out. (read timeout=10)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\trow1\Documents\python\projects\bot_test\main.py", line 57, in <module>
+    main()
+  File "C:\Users\trow1\Documents\python\projects\bot_test\main.py", line 46, in main
+    tmp = pd.concat([tmp, get_board_rate(exchange, time_str)])
+  File "C:\Users\trow1\Documents\python\projects\bot_test\main.py", line 14, in get_board_rate
+    orderbook = exchange.fetch_order_book(symbol)
+  File "C:\Users\trow1\Documents\python\python-3.10.2-embed-amd64\lib\site-packages\ccxt\bybit.py", line 1420, in fetch_order_book
+    self.load_markets()
+  File "C:\Users\trow1\Documents\python\python-3.10.2-embed-amd64\lib\site-packages\ccxt\base\exchange.py", line 1488, in load_markets
+    markets = self.fetch_markets(params)
+  File "C:\Users\trow1\Documents\python\python-3.10.2-embed-amd64\lib\site-packages\ccxt\bybit.py", line 683, in fetch_markets
+    response = self.publicGetV2PublicSymbols(params)
+  File "C:\Users\trow1\Documents\python\python-3.10.2-embed-amd64\lib\site-packages\ccxt\base\exchange.py", line 500, in inner
+    return entry(_self, **inner_kwargs)
+  File "C:\Users\trow1\Documents\python\python-3.10.2-embed-amd64\lib\site-packages\ccxt\base\exchange.py", line 551, in request
+    return self.fetch2(path, api, method, params, headers, body, config, context)
+  File "C:\Users\trow1\Documents\python\python-3.10.2-embed-amd64\lib\site-packages\ccxt\base\exchange.py", line 547, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+  File "C:\Users\trow1\Documents\python\python-3.10.2-embed-amd64\lib\site-packages\ccxt\base\exchange.py", line 662, in fetch
+    raise RequestTimeout(details) from e
+ccxt.base.errors.RequestTimeout: bybit GET https://api.bybit.com/v2/public/symbols
+
+C:\Users\trow1\Documents\python\python-3.10.2-embed-amd64>
